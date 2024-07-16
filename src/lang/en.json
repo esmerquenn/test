@@ -1,0 +1,19 @@
+{
+    "portfolio": "Design Portfolio",
+    "repair": "Repair and Construction",
+    "investment": "Investment Projects",
+    "about": "About Us",
+    "contact": "Contact",
+    "name": "Name",
+    "nameMessage": "Enter your name",
+    "phone": "Phone",
+    "phoneMessage": "Enter your phone number",
+    "email": "Email",
+    "emailMessage": "Enter your email",
+    "message": "Message",
+    "messageMessage": "Enter your message",
+    "request": "Send Request",
+    "check_phone": "Please enter a valid phone number (10-15 digits)",
+    "check_name":"Please enter a valid name (letters and spaces only)",
+    "check_mail": "Please enter a valid email address"
+  }

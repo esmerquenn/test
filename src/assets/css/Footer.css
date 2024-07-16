@@ -1,0 +1,31 @@
+footer {
+  margin-top: auto;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foot {
+  text-align: center;
+}
+.icons {
+  & img {
+    width: 30px;
+  }
+}
+.footer_absolute {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  & footer {
+    height: 20vh !important;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  footer {
+    height: 20vh;
+   
+  }
+}

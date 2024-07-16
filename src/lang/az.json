@@ -1,0 +1,19 @@
+{
+  "portfolio": "Dizayn Portfolio",
+  "repair": "Təmir və Tikinti",
+  "investment": "İnvestisiya Layihələri",
+  "about": "Haqqımızda",
+  "contact": "Əlaqə",
+  "name": "Ad",
+  "nameMessage": "Adınızı daxil edin",
+  "phone": "Telefon",
+  "phoneMessage": "Telefon nömrənizi daxil edin",
+  "email": "Email",
+  "emailMessage": "Emailinizi daxil edin",
+  "message": "Mesaj",
+  "messageMessage": "Mesajınızı daxil edin",
+  "request": "Sorğu göndər",
+  "check_phone": "Zəhmət olmasa etibarlı telefon nömrəsi daxil edin (10-15 rəqəm)",
+  "check_name": "Zəhmət olmasa etibarlı ad daxil edin (yalnız hərflər və boşluqlar)",
+  "check_mail": "Zəhmət olmasa etibarlı e-poçt ünvanı daxil edin"
+}
