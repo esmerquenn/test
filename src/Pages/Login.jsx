@@ -27,7 +27,7 @@ function Login() {
   },[setIsPlayed])
   return (
     <div className="login_me ">
-      <div onClick={handleToggle} className={`sidebar_div container flex_container invisible ${isPlayed && "visible"}`}>
+      <div onClick={handleToggle} className={`sidebar_div container flex_container invisible ${isPlayed ? "visible":""}`}>
         <Sidebar toggle={toggle} />
       </div>
       <div onClick={handleToggle} className={`blur_div esmer ${toggle ? "cover" : " "}`}></div>

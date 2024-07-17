@@ -51,13 +51,11 @@ body {
 }
 
 .invisible {
-  visibility: hidden;
   opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 .visible {
-  visibility: visible;
   opacity: 1;
-  transition: opacity 2s ease, visibility 2s ease;
 }
 
 /* NAV  */
