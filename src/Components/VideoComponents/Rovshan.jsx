@@ -5,6 +5,7 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
   const width = useWidth();
   const videoRef = useRef();
   const [loading, setLoading] = useState(true);
+  const errorRef = useRef();
 
   const splashDesktop = "/assets/video/splash-screen-desktop.webm";
   const loopDesktop = "/assets/video/desktop-loop.webm";
@@ -55,6 +56,11 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
         });
       }
     }
+    videoElement.addEventListener("error", (e) => {
+      console.error(`Error loading: ${JSON.stringify(e)}`);
+      alert(`Error loading: ${JSON.stringify(e)}`);
+      errorRef.innerHTML = JSON.stringify(e);
+    });
   }, [setIsPlayed]);
 
   return (
@@ -65,6 +71,7 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
         </div>
       ) : null} */}
       <video ref={videoRef} autoPlay className={`video_bg video-element`} playsInline preload="auto" muted></video>
+      <div ref={errorRef}> </div>
     </div>
   );
 };
