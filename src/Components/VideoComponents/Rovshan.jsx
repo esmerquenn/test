@@ -24,9 +24,11 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
     if (width > 548) {
       if (isPlayed) {
         videoElement.src = loopDesktop;
+        videoElement.load();
         handleVideoPlay(videoElement);
       } else {
         videoElement.src = splashDesktop;
+        videoElement.load();
         handleVideoPlay(videoElement, false);
         videoElement.addEventListener("ended", () => {
           localStorage.setItem("isPlayed", JSON.stringify(true));
@@ -41,9 +43,11 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
     } else {
       if (isPlayed) {
         videoElement.src = loopMobile;
+        videoElement.load();
         handleVideoPlay(videoElement);
       } else {
         videoElement.src = splashMobile;
+        videoElement.load();
         handleVideoPlay(videoElement, false);
         videoElement.addEventListener("ended", () => {
           localStorage.setItem("isPlayed", JSON.stringify(true));
@@ -51,6 +55,7 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
 
           setTimeout(() => {
             videoElement.src = loopMobile;
+            videoElement.load();
             handleVideoPlay(videoElement);
           }, 10);
         });
