@@ -6,18 +6,17 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
   const videoRef = useRef();
   const [loading, setLoading] = useState(true);
 
-  const splashDesktop = "/assets/video/splash-screen-desktop.mp4";
-  const loopDesktop = "/assets/video/desktop-loop.mp4";
-  const splashMobile = "/assets/video/splash-screen-mobile.mp4";
-  const loopMobile = "/assets/video/mobile-loop.mp4";
+  const splashDesktop = "/assets/video/splash-screen-desktop.webm";
+  const loopDesktop = "/assets/video/desktop-loop.webm";
+  const splashMobile = "/assets/video/splash-screen-mobile.webm";
+  const loopMobile = "/assets/video/mobile-loop.webm";
 
   useEffect(() => {
     const videoElement = videoRef.current;
-    if (width > 548) {
+    if (width < 548) {
       if (isPlayed) {
         videoElement.src = loopDesktop;
         videoElement.loop = true;
-        console.log("dasdasd");
       } else {
         videoElement.src = splashDesktop;
         videoElement.addEventListener("ended", () => {
@@ -46,7 +45,7 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
         });
       }
     }
-  }, [isPlayed, setIsPlayed]);
+  }, [setIsPlayed]);
 
   return (
     <div className="videobg-container">
