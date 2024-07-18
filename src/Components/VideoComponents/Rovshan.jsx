@@ -20,7 +20,7 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
 
   useEffect(() => {
     const videoElement = videoRef.current;
-    if (width < 548) {
+    if (width > 548) {
       if (isPlayed) {
         videoElement.src = loopDesktop;
         handleVideoPlay(videoElement);
