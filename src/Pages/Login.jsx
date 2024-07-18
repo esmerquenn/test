@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LazyLoadBackgroundVideo from "../Components/VideoComponents/LazyLoadBackgroundVideo";
 import Sidebar from "../Components/SideBarComponents/Sidebar";
+import Rovshan from "../Components/VideoComponents/Rovshan";
 
 function Login() {
   const [toggle, setToggle] = useState(false);
@@ -21,18 +22,17 @@ function Login() {
     };
   }, []);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     console.log(isPlayed);
-  },[setIsPlayed])
+  }, [setIsPlayed]);
   return (
     <div className="login_me ">
-      <div onClick={handleToggle} className={`sidebar_div container flex_container invisible ${isPlayed ? "visible":""}`}>
+      <div onClick={handleToggle} className={`sidebar_div container flex_container invisible ${isPlayed ? "visible" : ""}`}>
         <Sidebar toggle={toggle} />
       </div>
       <div onClick={handleToggle} className={`blur_div esmer ${toggle ? "cover" : " "}`}></div>
       <div className="video_div">
-        <LazyLoadBackgroundVideo {...{isPlayed, setIsPlayed}} />
+        <Rovshan {...{ isPlayed, setIsPlayed }} />
       </div>
     </div>
   );

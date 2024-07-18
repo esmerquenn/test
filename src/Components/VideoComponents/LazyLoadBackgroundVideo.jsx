@@ -258,16 +258,14 @@
 //   );
 // }
 
-
 // export default LazyLoadBackgroundVideo;
-
 
 import { useEffect, useRef, useState } from "react";
 import useWidth from "./../../Hooks/UseWidth";
-import video1 from "./../../assets/video/2.mp4";
-import video2 from "./../../assets/video/anime002.mp4";
-import video3 from "./../../assets/video/aaa.mp4";
-import video4 from "./../../assets/video/new4.mp4";
+// import video1 from "./../../assets/video/2.mp4";
+// import video2 from "./../../assets/video/anime002.mp4";
+// import video3 from "./../../assets/video/aaa.mp4";
+// import video4 from "./../../assets/video/new4.mp4";
 import "./VideoBg.css";
 import { useLocation } from "react-router-dom";
 
@@ -277,6 +275,11 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
   const width = useWidth();
   const [loading, setLoading] = useState(true);
   const { pathname } = useLocation();
+
+  const video1 = "/assets/video/splash-screen-desktop.mp4";
+  const video2 = "/assets/video/desktop-loop.mp4";
+  const video3 = "/assets/video/splash-screen-mobile.mp4";
+  const video4 = "/assets/video/mobile-loop.mp4";
 
   useEffect(() => {
     if (pathname === "/") {
@@ -289,7 +292,7 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
           videoRef2.current.style.display = "block";
           videoRef2.current.classList.remove("hidden");
           videoRef2.current.play();
-        }, 10); 
+        }, 10);
       };
 
       const handleVideoLoaded = () => {
@@ -319,7 +322,7 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
       setLoading(true);
 
       const playVideo = () => {
-        if (width < 548) {
+        if (width > 548) {
           videoRef1.current.src = video3;
           videoRef2.current.src = video4;
         } else {
@@ -333,9 +336,7 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
         } else {
           videoRef1.current.style.display = "block";
           videoRef2.current.style.display = "none";
-          videoRef1.current.play().catch((error) => {
-            console.error("Video oynatılamadı:", error);
-          });
+          videoRef1.current.play();
         }
       };
 
@@ -362,11 +363,11 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.1
+      threshold: 0.1,
     };
 
     const observerCallback = (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           if (entry.target === videoRef1.current && !isPlayed) {
             videoRef1.current.play().catch((error) => {
@@ -428,6 +429,3 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
 }
 
 export default LazyLoadBackgroundVideo;
-
-
-
