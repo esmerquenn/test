@@ -11,36 +11,46 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
   const splashMobile = "/assets/video/splash-screen-mobile.webm";
   const loopMobile = "/assets/video/mobile-loop.webm";
 
+  const handleVideoPlay = (videoElement, loop = true) => {
+    videoElement.addEventListener("canplaythrough", () => {
+      videoElement.play();
+      videoElement.loop = loop;
+    });
+  };
+
   useEffect(() => {
     const videoElement = videoRef.current;
     if (width < 548) {
       if (isPlayed) {
         videoElement.src = loopDesktop;
-        videoElement.loop = true;
+        handleVideoPlay(videoElement);
       } else {
         videoElement.src = splashDesktop;
+        handleVideoPlay(videoElement, false);
         videoElement.addEventListener("ended", () => {
           localStorage.setItem("isPlayed", JSON.stringify(true));
           setIsPlayed(true);
+
           setTimeout(() => {
             videoElement.src = loopDesktop;
-            videoElement.play();
+            handleVideoPlay(videoElement);
           }, 10);
         });
       }
     } else {
       if (isPlayed) {
         videoElement.src = loopMobile;
-        videoElement.loop = true;
-        console.log("dasdasd");
+        handleVideoPlay(videoElement);
       } else {
         videoElement.src = splashMobile;
+        handleVideoPlay(videoElement, false);
         videoElement.addEventListener("ended", () => {
           localStorage.setItem("isPlayed", JSON.stringify(true));
           setIsPlayed(true);
+
           setTimeout(() => {
             videoElement.src = loopMobile;
-            videoElement.play();
+            handleVideoPlay(videoElement);
           }, 10);
         });
       }
