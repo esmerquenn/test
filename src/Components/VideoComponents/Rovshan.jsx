@@ -12,71 +12,61 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
   const splashMobile = "/assets/video/splash-screen-mobile.webm";
   const loopMobile = "/assets/video/mobile-loop.webm";
 
-  const handleVideoPlay = (videoElement, loop = true) => {
-    videoElement.addEventListener("canplaythrough", () => {
-      videoElement.play();
-      videoElement.loop = loop;
-    });
+  const handleCanPlayThrough = (videoElement, loop) => {
+    videoElement.play();
+    videoElement.loop = loop;
+    setLoading(false);
   };
 
   useEffect(() => {
     const videoElement = videoRef.current;
+
+    const setVideoSourceAndPlay = (src, loop) => {
+      setLoading(true);
+      videoElement.src = src;
+      videoElement.load();
+      videoElement.addEventListener("canplaythrough", () => handleCanPlayThrough(videoElement, loop), { once: true });
+    };
+
+    const handleVideoEnded = () => {
+      localStorage.setItem("isPlayed", JSON.stringify(true));
+      setIsPlayed(true);
+      setTimeout(() => {
+        const loopSrc = width > 548 ? loopDesktop : loopMobile;
+        setVideoSourceAndPlay(loopSrc, true);
+      }, 10);
+    };
+
     if (width > 548) {
       if (isPlayed) {
-        videoElement.src = loopDesktop;
-        videoElement.load();
-        handleVideoPlay(videoElement);
+        setVideoSourceAndPlay(loopDesktop, true);
       } else {
-        videoElement.src = splashDesktop;
-        videoElement.load();
-        handleVideoPlay(videoElement, false);
-        videoElement.addEventListener("ended", () => {
-          localStorage.setItem("isPlayed", JSON.stringify(true));
-          setIsPlayed(true);
-
-          setTimeout(() => {
-            videoElement.src = loopDesktop;
-            handleVideoPlay(videoElement);
-          }, 10);
-        });
+        setVideoSourceAndPlay(splashDesktop, false);
+        videoElement.addEventListener("ended", handleVideoEnded, { once: true });
       }
     } else {
       if (isPlayed) {
-        videoElement.src = loopMobile;
-        videoElement.load();
-        handleVideoPlay(videoElement);
+        setVideoSourceAndPlay(loopMobile, true);
       } else {
-        videoElement.src = splashMobile;
-        videoElement.load();
-        handleVideoPlay(videoElement, false);
-        videoElement.addEventListener("ended", () => {
-          localStorage.setItem("isPlayed", JSON.stringify(true));
-          setIsPlayed(true);
-
-          setTimeout(() => {
-            videoElement.src = loopMobile;
-            videoElement.load();
-            handleVideoPlay(videoElement);
-          }, 10);
-        });
+        setVideoSourceAndPlay(splashMobile, false);
+        videoElement.addEventListener("ended", handleVideoEnded, { once: true });
       }
     }
-    videoElement.addEventListener("error", (e) => {
-      console.error(`Error loading: ${JSON.stringify(e)}`);
-      alert(`Error loading: ${JSON.stringify(e)}`);
-      errorRef.innerHTML = JSON.stringify(e);
-    });
+
+    return () => {
+      videoElement.removeEventListener("ended", handleVideoEnded);
+    };
   }, [setIsPlayed]);
 
   return (
     <div className="videobg-container">
-      {/* {loading && !isPlayed ? (
+      {loading && !isPlayed ? (
         <div className="loading">
           <div className="loader_login"></div>
         </div>
-      ) : null} */}
-      <video ref={videoRef} autoPlay className={`video_bg video-element`} playsInline preload="auto" muted></video>
-      <div ref={errorRef}> </div>
+      ) : null}
+      <video ref={videoRef} autoPlay className="video_bg video-element" playsInline preload="auto" muted></video>
+      <div ref={errorRef}></div>
     </div>
   );
 };
