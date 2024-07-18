@@ -14,11 +14,13 @@ body{background: #050D16;}
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: opacity 1s ease-in-out;
+	transition: opacity 5s ease-in-out;
   }
   
   .hidden {
 	opacity: 0;
+	transition: opacity 5s ease-in-out;
+
   }
 .loading{
 	height: 100vh;

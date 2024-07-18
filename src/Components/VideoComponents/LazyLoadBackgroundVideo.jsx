@@ -289,7 +289,7 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
           videoRef2.current.style.display = "block";
           videoRef2.current.classList.remove("hidden");
           videoRef2.current.play();
-        }, 1000); // Geçiş süresi (1 saniye)
+        }, 10); 
       };
 
       const handleVideoLoaded = () => {
@@ -307,7 +307,6 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
 
       return () => {
         if (video1Element && video2Element) {
-          video1Element.removeEventListener("ended", handleVideo1Ended);
           video1Element.removeEventListener("canplaythrough", handleVideoLoaded);
           video2Element.removeEventListener("canplaythrough", handleVideoLoaded);
         }
@@ -415,7 +414,7 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
       <video
         ref={videoRef2}
         autoPlay={isPlayed}
-        className="video_bg video-element"
+        className={`video_bg video-element ${!isPlayed ? "hidden" : ""}`}
         playsInline
         preload="auto"
         muted
@@ -429,4 +428,6 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
 }
 
 export default LazyLoadBackgroundVideo;
+
+
 
