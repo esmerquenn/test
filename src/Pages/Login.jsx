@@ -4,7 +4,7 @@ import Rovshan from "../Components/VideoComponents/Rovshan";
 
 function Login() {
   const [toggle, setToggle] = useState(false);
-  const [isPlayed, setIsPlayed] = useState(() => JSON.parse(localStorage.getItem("isPlayed")) || false);
+  const [isPlayed, setIsPlayed] = useState(() => JSON.parse(sessionStorage.getItem("isPlayed")) || false);
   const [loading, setLoading] = useState(true);
 
   const handleToggle = () => {

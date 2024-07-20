@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import useWidth from "../../Hooks/UseWidth";
-// import './VideoBg.css'
 const Rovshan = ({ isPlayed, setIsPlayed,setLoading , loading }) => {
   const width = useWidth();
   const videoRef = useRef();
@@ -28,7 +27,7 @@ const Rovshan = ({ isPlayed, setIsPlayed,setLoading , loading }) => {
     };
 
     const handleVideoEnded = () => {
-      localStorage.setItem("isPlayed", JSON.stringify(true));
+      sessionStorage.setItem("isPlayed", JSON.stringify(true));
       setIsPlayed(true);
       setTimeout(() => {
         const loopSrc = width > 548 ? loopDesktop : loopMobile;
