@@ -258,7 +258,6 @@ input:focus {
 
 /* ABOUT START */
 .main-width_horizontal {
-  border-top: 3px solid #e5e5e5;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-block: 30px;

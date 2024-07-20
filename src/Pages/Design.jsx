@@ -17,8 +17,8 @@ function Design() {
         ))}
       </section>
 
-      {page > 0 && <button onClick={() => setPage((prev) => prev - 1)}>Öncəki</button>}
-      {design.length === 10 && <button onClick={() => setPage((prev) => prev + 1)}>Sonrakı</button>}
+      {page > 0 && <button className="button_prev_next" onClick={() => setPage((prev) => prev - 1)}>Öncəki</button>}
+      {design.length === 10 && <button className="button_prev_next"  onClick={() => setPage((prev) => prev + 1)}>Sonrakı</button>}
     </>
   );
 }

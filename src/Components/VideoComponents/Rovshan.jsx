@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import useWidth from "../../Hooks/UseWidth";
-
-const Rovshan = ({ isPlayed, setIsPlayed }) => {
+// import './VideoBg.css'
+const Rovshan = ({ isPlayed, setIsPlayed,setLoading , loading }) => {
   const width = useWidth();
   const videoRef = useRef();
-  const [loading, setLoading] = useState(true);
-  const errorRef = useRef();
 
   const splashDesktop = "/assets/video/splash-screen-desktop.webm";
   const loopDesktop = "/assets/video/desktop-loop.webm";
@@ -14,6 +12,7 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
 
   const handleCanPlayThrough = (videoElement, loop) => {
     videoElement.play();
+    videoElement.playsInline = true;
     videoElement.loop = loop;
     setLoading(false);
   };
@@ -65,8 +64,15 @@ const Rovshan = ({ isPlayed, setIsPlayed }) => {
           <div className="loader_login"></div>
         </div>
       ) : null}
-      <video ref={videoRef} autoPlay className="video_bg video-element" playsInline preload="auto" muted></video>
-      <div ref={errorRef}></div>
+      <video 
+      ref={videoRef}
+       autoPlay
+        className="video_bg video-element" 
+        playsInline 
+        preload="auto" 
+        muted
+        style={{display:"block"}}
+        ></video>
     </div>
   );
 };

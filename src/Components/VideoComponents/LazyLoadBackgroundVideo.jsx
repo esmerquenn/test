@@ -322,7 +322,7 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
       setLoading(true);
 
       const playVideo = () => {
-        if (width > 548) {
+        if (width < 548) {
           videoRef1.current.src = video3;
           videoRef2.current.src = video4;
         } else {
@@ -336,7 +336,9 @@ function LazyLoadBackgroundVideo({ isPlayed, setIsPlayed }) {
         } else {
           videoRef1.current.style.display = "block";
           videoRef2.current.style.display = "none";
-          videoRef1.current.play();
+          videoRef1.current.play().catch((error) => {
+            console.error("Video oynatılamadı:", error);
+          });
         }
       };
 
