@@ -26,14 +26,14 @@ const Sidebar = ({ toggle }) => {
     } else {
       timer = setTimeout(() => {
         setIsFixed(false);
-      }, 600);
+      }, 400);
     }
     return () => clearTimeout(timer);
   }, [toggle]);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   return (
-    <div className={`sidebar  ${toggle ? "active" : ""} ${isFixed ? "fixed" : ""} ${!isHomePage ? "sidebar_bg" : ""}`}>
+    <div className={`sidebar  ${toggle ? "active" : ""} ${isFixed ? "fixed" : ""} ${!isHomePage ? "sidebar_bg" : ""} ${isHomePage && toggle && width <768 ? "homebar_bg": ""}`}>
       <div className="nav_menu ">
         <div className={`lang ${toggle ? "langing" : ""}`}>
           <button onClick={() => setLanguage("az")}>az</button>

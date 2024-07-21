@@ -35,8 +35,8 @@ function Layout() {
             <div onClick={handleToggle} className="sidebar_div">
               <Sidebar toggle={toggle} />
             </div>
-            <div onClick={handleToggle} className={`blur_div esmer ${toggle ? "cover" : " "}`}></div>
-            <main className={` content ${toggle ? "blur " : ""}`}>
+            <div onClick={handleToggle} className={`blur_div ${toggle ? "cover" : " "}`}></div>
+            <main className={` content ${toggle ? "blur" : ""}`}>
               <Outlet />
             </main>
           </div>

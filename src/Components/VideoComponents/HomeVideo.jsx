@@ -1,6 +1,6 @@
 // import React, { useEffect, useRef, useState } from "react";
 // import useWidth from "../../Hooks/UseWidth";
-// const Rovshan = ({ isPlayed, setIsPlayed, setLoading, loading }) => {
+// const HomeVideo = ({ isPlayed, setIsPlayed, setLoading, loading }) => {
 //   const width = useWidth();
 //   const videoRef = useRef();
 //   const [videoVisible, setVideoVisible] = useState(true);
@@ -84,11 +84,11 @@
 //   );
 // };
 
-// export default Rovshan;
+// export default HomeVideo;
 // import React, { useEffect, useRef, useState } from "react";
 // import useWidth from "../../Hooks/UseWidth";
 
-// const Rovshan = ({ isPlayed, setIsPlayed, setLoading, loading }) => {
+// const HomeVideo = ({ isPlayed, setIsPlayed, setLoading, loading }) => {
 //   const width = useWidth();
 //   const videoRef = useRef();
 //   const [videoVisible, setVideoVisible] = useState(false);
@@ -173,12 +173,12 @@
 //   );
 // };
 
-// export default Rovshan;
+// export default HomeVideo;
 
 // import React, { useEffect, useRef } from "react";
 // import useWidth from "../../Hooks/UseWidth";
 
-// const Rovshan = ({ isPlayed, setIsPlayed, setLoading, loading }) => {
+// const HomeVideo = ({ isPlayed, setIsPlayed, setLoading, loading }) => {
 //   const width = useWidth();
 //   const videoRef = useRef();
 
@@ -268,12 +268,12 @@
 //   );
 // };
 
-// export default Rovshan;
+// export default HomeVideo;
 
 import React, { useEffect, useRef } from "react";
 import useWidth from "../../Hooks/UseWidth";
-
-const Rovshan = ({ isPlayed, setIsPlayed, setLoading, loading, hasVisited }) => {
+import './VideoBg.css'
+const HomeVideo = ({ isPlayed, setIsPlayed, setLoading, loading, hasVisited }) => {
   const width = useWidth();
   const videoRef = useRef();
 
@@ -355,4 +355,4 @@ const Rovshan = ({ isPlayed, setIsPlayed, setLoading, loading, hasVisited }) => 
   );
 };
 
-export default Rovshan;
+export default HomeVideo;

@@ -2,7 +2,7 @@
 // import Sidebar from "../Components/SideBarComponents/Sidebar";
 // import Rovshan from "../Components/VideoComponents/Rovshan";
 
-// function Login() {
+// function Home() {
 //   const [toggle, setToggle] = useState(false);
 //   const [isPlayed, setIsPlayed] = useState(() => JSON.parse(sessionStorage.getItem("isPlayed")) || false);
 //   const [loading, setLoading] = useState(true);
@@ -38,18 +38,19 @@
 //   );
 // }
 
-// export default Login;
+// export default Home;
 
 import React, { useEffect, useState } from "react";
 import Sidebar from "../Components/SideBarComponents/Sidebar";
-import Rovshan from "../Components/VideoComponents/Rovshan";
-
-function Login() {
+import HomeVideo from "../Components/VideoComponents/HomeVideo";
+import useWidth from './../Hooks/UseWidth'
+function Home() {
   const [toggle, setToggle] = useState(false);
   const [isPlayed, setIsPlayed] = useState(() => JSON.parse(sessionStorage.getItem("isPlayed")) || false);
   const [loading, setLoading] = useState(true);
   const [hasVisited, setHasVisited] = useState(() => JSON.parse(sessionStorage.getItem("hasVisited")) || false);
-
+const width = useWidth()
+console.log(width, 'width');
   const handleToggle = () => {
     setToggle((prev) => !prev);
   };
@@ -66,9 +67,7 @@ function Login() {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(isPlayed);
-  }, [setIsPlayed]);
+ 
 
   useEffect(() => {
     if (isPlayed && !loading) {
@@ -79,16 +78,16 @@ function Login() {
 
   return (
     <div className="login_me ">
-      <div onClick={handleToggle} className={`sidebar_div container flex_container invisible ${isPlayed && !loading || hasVisited ? "visible" : ""}`}>
+      <div onClick={handleToggle} className={`sidebar_div container flex_container invisible ${isPlayed && !loading || hasVisited ? "visible" : ""} ${toggle && width<768 ? "homebar_bg": ""}`}>
         <Sidebar toggle={toggle} />
       </div>
       <div onClick={handleToggle} className={`blur_div esmer ${toggle ? "cover" : " "}`}></div>
       <div className="video_div">
-        <Rovshan {...{ isPlayed, setIsPlayed, setLoading, loading, hasVisited }} />
+        <HomeVideo {...{ isPlayed, setIsPlayed, setLoading, loading, hasVisited }} />
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Home;
 

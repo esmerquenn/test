@@ -39,8 +39,8 @@ body {
   position: -webkit-sticky; /* For Safari */
   position: sticky;
   top: 0;
-  height: calc(100vh - 150px); /* Adjust based on your footer height */
-  width: 250px; /* Adjust based on your design */
+  height: calc(100vh - 150px);
+  width: 250px;
   color: white;
   height: 100vh;
   padding: 10px;
@@ -48,6 +48,9 @@ body {
 }
 .sidebar_bg {
   background: #3c3c3c;
+}
+.homebar_bg{
+  background: #050d1655;
 }
 
 .invisible {
@@ -81,6 +84,7 @@ body {
     gap: 5px;
     & a {
       display: block;
+      padding-bottom: 5px;
     }
   }
 }
@@ -107,7 +111,6 @@ body {
   color: #fff !important;
   border-bottom: 1px solid #fff;
   position: relative;
-  padding-bottom: 5px;
 }
 
 .a_active::before,
@@ -130,7 +133,7 @@ body {
   right: 100%;
 }
 /* MAIN */
-
+main{min-height: 80vh;}
 .main_img,
 .main_img_vertical,
 .main_img_horizontal,
@@ -193,7 +196,10 @@ td {
 }
 /* CONTACT */
 .form_width {
-  width: 100%;
+  display: flex;
+  margin-top: 10vh;
+  width: 53vw;
+
 }
 .contact_form {
   width: 700px;
@@ -347,6 +353,12 @@ h6 {
   width: 100%;
 }
 @media only screen and (max-width: 1140px) {
+  .form_width {
+    display: flex;
+    margin-top: 10vh;
+    width: 100%;
+  
+  }
   .flex_container {
     max-width: 95%;
   }
@@ -439,6 +451,7 @@ h6 {
   }
   .blur {
     filter: blur(1px);
+    margin-left: 40px;
   }
   .cover {
     right: 0;

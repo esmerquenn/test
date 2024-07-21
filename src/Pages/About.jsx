@@ -3,11 +3,12 @@ import { useGetAboutQuery } from "../api/slices/about";
 import { useGetEmployeeQuery } from "../api/slices/employee";
 import AboutHeading from "../Components/AboutComponents/AboutHeading";
 import Employee from "../Components/AboutComponents/Employee";
+import Loading from './../Components/Loading'
+import { Result, Button } from "antd"; // Import Ant Design components
 
 function About() {
   const { data , error, isLoading} = useGetAboutQuery();
   const {data:employeeData, error:employeeError, isLoading:employeeIsLoading}= useGetEmployeeQuery()
-  console.log(data, employeeData);
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth < 768) {
@@ -44,6 +45,25 @@ function About() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  if (isLoading || employeeIsLoading) {
+    return <Loading/>
+  }
+
+  if (error || employeeError) {
+    return (
+      <Result
+        status="error"
+        title="There was an error"
+        subTitle="Please try again later."
+        extra={
+          <Button type="primary" onClick={() => window.location.reload()}>
+            Reload
+          </Button>
+        }
+      />
+    );
+  }
   return (
     <div>
 

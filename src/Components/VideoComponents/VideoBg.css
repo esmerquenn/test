@@ -32,7 +32,6 @@ body {
   background: radial-gradient(farthest-side at right, #fff 98%, transparent) 20% 50%/40% 80%,
     radial-gradient(farthest-side at left, #fff 98%, transparent) 80% 50%/40% 80%, #050d16;
   background-repeat: no-repeat;
-  /* border-radius: 30px; */
   filter: blur(1px) contrast(1);
   animation: l18 0.8s infinite alternate;
 }
@@ -44,16 +43,6 @@ body {
   100% {
     background-position: 80% 50%, 20% 50%;
   }
-}
-.videobg-container .overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 0px 15px;
 }
 
 .videobg-container video {
@@ -69,20 +58,4 @@ body {
   object-fit: cover;
 }
 
-@media all and (max-width: 1024px) {
-  .videobg-container .overlay h1 {
-    font-size: 62px;
-  }
-}
 
-@media all and (max-width: 900px) {
-  .videobg-container .overlay h1 {
-    font-size: 56px;
-  }
-}
-
-@media all and (max-width: 676px) {
-  .videobg-container .overlay h1 {
-    font-size: 32px;
-  }
-}
