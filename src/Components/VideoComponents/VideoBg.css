@@ -1,100 +1,88 @@
 .videobg-container {
-	position: relative;
-	width: 100%;
-	height: 100vh !important;
-
+  position: relative;
+  width: 100%;
+  height: 100vh !important;
 }
 
 .videobg-container.full-screen {
-	height: 100vh;
+  height: 100vh;
 }
-body{background: #050D16;}
-.video_bg {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: opacity 5s ease-in-out;
-  }
-  
-  .hidden {
-	opacity: 0;
-	transition: opacity 5s ease-in-out;
+body {
+  background: #050d16;
+}
 
-  }
-.loading{
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .load {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loader_login {
+  width: 80px;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  background: radial-gradient(farthest-side at right, #fff 98%, transparent) 20% 50%/40% 80%,
+    radial-gradient(farthest-side at left, #fff 98%, transparent) 80% 50%/40% 80%, #050d16;
+  background-repeat: no-repeat;
+  /* border-radius: 30px; */
+  filter: blur(1px) contrast(1);
+  animation: l18 0.8s infinite alternate;
+}
+@keyframes l18 {
+  0%,
+  20% {
+    background-position: 20% 50%, 80% 50%;
   }
-  .loader_login {
-	width: 80px;
-	aspect-ratio: 1;
-	box-sizing: border-box;
-	background: radial-gradient(farthest-side at right, #fff 98%, transparent) 20% 50%/40% 80%,
-	  radial-gradient(farthest-side at left, #fff 98%, transparent) 80% 50%/40% 80%, #050D16;
-	background-repeat: no-repeat;
-	/* border-radius: 30px; */
-	filter: blur(1px) contrast(1);
-	animation: l18 0.8s infinite alternate;
+  100% {
+    background-position: 80% 50%, 20% 50%;
   }
-  @keyframes l18 {
-	0%,
-	20% {
-	  background-position: 20% 50%, 80% 50%;
-	}
-	100% {
-	  background-position: 80% 50%, 20% 50%;
-	}
-  }
+}
 .videobg-container .overlay {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	right: 50%;
-	width: 100%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	padding: 0px 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0px 15px;
 }
 
-
-
-
 .videobg-container video {
-	width: 100%;
-	height: 100vh;
-	object-fit: cover;
-	z-index: -1;
-	position: relative;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  position: relative;
 }
 
 .videobg-container.full-screen video {
-	height: 100%;
-	object-fit: cover;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media all and (max-width: 1024px) {
-	.videobg-container .overlay h1 {
-		font-size: 62px;
-	}
+  .videobg-container .overlay h1 {
+    font-size: 62px;
+  }
 }
 
 @media all and (max-width: 900px) {
-	.videobg-container .overlay h1 {
-		font-size: 56px;
-	}
+  .videobg-container .overlay h1 {
+    font-size: 56px;
+  }
 }
 
 @media all and (max-width: 676px) {
-	.videobg-container .overlay h1 {
-		font-size: 32px;
-	}
+  .videobg-container .overlay h1 {
+    font-size: 32px;
+  }
 }
