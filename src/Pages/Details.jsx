@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../Components/Loading";
 import HorizontalPost from "../Components/Posts/HorizontalPost";
 import VerticalPost from "../Components/Posts/VerticalPost";
+import Error from "../Components/Error";
 
 function Details() {
   const { slug } = useParams();
@@ -12,14 +13,53 @@ function Details() {
   const { data: detailData, isLoading, error } = useGetPostDetailQuery(slug);
 
   useEffect(() => {
-    console.log(slug, detailData, "detailId");
     setItemId(detailData);
   }, [detailData]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth < 768) {
+        const images = document.querySelectorAll(".image, .main_img, .main_img_vertical, main_img_horizontal");
+        let closest = null;
+        let closestDist = Infinity;
+
+        images.forEach((img) => {
+          const imgRect = img.getBoundingClientRect();
+          const imgCenter = imgRect.top + imgRect.height;
+          const screenCenter = window.innerHeight / 2;
+          const dist = Math.abs(screenCenter - imgCenter);
+
+          if (dist < closestDist) {
+            closest = img;
+            closestDist = dist;
+          }
+        });
+
+        images.forEach((img) => {
+          if (img === closest) {
+            img.style.filter = "grayscale(0)";
+          } else {
+            img.style.filter = "grayscale(100%)";
+          }
+        });
+      }
+    };
+    // Event listener for scroll
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
+
   if (isLoading) return <Loading />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <Error />;
 
   return (
-    <div>
+    <>
       {itemId ? (
         <>
           {itemId.thumbnail_type === "HORIZONTAL" ? (
@@ -39,7 +79,7 @@ function Details() {
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }
 

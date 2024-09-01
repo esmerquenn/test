@@ -4,6 +4,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background: #3c3c3c;
 }
 
@@ -23,6 +24,23 @@ footer {
     height: 20vh !important;
   }
 }
+.our_logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  width: 100%;
+  letter-spacing: 1px;
+  padding: 6px;
+  font-size: 1rem;
+ 
+  color: #C2C2C2;
+}
+.our_logo img{
+  width: 22px;
+}
+
+
 
 @media only screen and (max-width: 1140px) {
   footer {

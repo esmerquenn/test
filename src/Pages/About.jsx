@@ -3,12 +3,13 @@ import { useGetAboutQuery } from "../api/slices/about";
 import { useGetEmployeeQuery } from "../api/slices/employee";
 import AboutHeading from "../Components/AboutComponents/AboutHeading";
 import Employee from "../Components/AboutComponents/Employee";
-import Loading from './../Components/Loading'
+import Loading from "./../Components/Loading";
 import { Result, Button } from "antd"; // Import Ant Design components
+import Error from "../Components/Error";
 
 function About() {
-  const { data , error, isLoading} = useGetAboutQuery();
-  const {data:employeeData, error:employeeError, isLoading:employeeIsLoading}= useGetEmployeeQuery()
+  const { data, error, isLoading } = useGetAboutQuery();
+  const { data: employeeData, error: employeeError, isLoading: employeeIsLoading } = useGetEmployeeQuery();
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth < 768) {
@@ -47,32 +48,14 @@ function About() {
   }, []);
 
   if (isLoading || employeeIsLoading) {
-    return <Loading/>
-  }
-
-  if (error || employeeError) {
-    return (
-      <Result
-        status="error"
-        title="There was an error"
-        subTitle="Please try again later."
-        extra={
-          <Button type="primary" onClick={() => window.location.reload()}>
-            Reload
-          </Button>
-        }
-      />
-    );
+    return <Loading />;
+  } else if (error || employeeError) {
+    return <Error />;
   }
   return (
     <div>
-
       <AboutHeading data={data} />
-      {employeeData ? (
-        employeeData.map((item, index) => <Employee key={item.id} {...{ index, item }} />)
-      ) : (
-        <div> about yogggg</div>
-      )}
+      {employeeData ? employeeData.map((item, index) => <Employee key={item.id} {...{ index, item }} />) : ""}
     </div>
   );
 }

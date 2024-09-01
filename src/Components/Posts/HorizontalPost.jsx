@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 
 function HorizontalPost({ description, title, slug, thumbnail }) {
   return (

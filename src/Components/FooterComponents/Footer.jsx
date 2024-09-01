@@ -1,13 +1,14 @@
 import React from "react";
-import "./../../assets/css/Footer.css";
-import behance from "./../../assets/img/behance.png";
-import instagram from "./../../assets/img/instagram.png";
-import facebook from "./../../assets/img/facebook.png";
-import phone from "./../../assets/img/phone.png";
-import pinterest from "./../../assets/img/pinterest.png";
-import linkedin from "./../../assets/img/linkedin.png";
+import "../../assets/css/Footer.css";
+import behance from "/img/behance.png";
+import instagram from "/img/instagram.png";
+import facebook from "/img/facebook.png";
+import phone from "/img/phone.png";
+import pinterest from "/img/pinterest.png";
+import linkedin from "/img/linkedin.png";
 import SliderBrands from "./SliderBrands";
 import { useLocation } from "react-router-dom";
+import mainer from "/img/mainer.png";
 const Footer = () => {
   const location = useLocation();
   const isContactPage = location.pathname !== "/contact";
@@ -27,6 +28,10 @@ const Footer = () => {
           <a href="mailto:methGdd@gmail.com">MethGdd@gmail.com</a>
         </div>
       </footer>
+      <div className="our_logo">
+        <img src={mainer} alt="mainer" />
+        <span>ainer</span>
+      </div>
     </>
   );
 };

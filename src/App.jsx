@@ -10,10 +10,12 @@ import "./assets/css/App.css";
 import Details from "./Pages/Details";
 import Layout from './Layout/Layout'
 import Home from "./Pages/Home";
+import ScrollToTop from "./Components/ScrollToTop";
 function App() {
 
   return (
     <BrowserRouter>
+    <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />

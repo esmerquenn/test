@@ -8,7 +8,7 @@ import Loading from "../Loading";
 export default function SliderBrands() {
   const { data, error, isLoading } = useGetBrandQuery();
   if (isLoading) return <Loading />;
-  if (error) return <div>Error: {error.message}</div>;
+
   var settings = {
     dots: false,
     infinite: true,
@@ -42,86 +42,34 @@ export default function SliderBrands() {
     ],
   };
   return (
-    <Slider className=" slider_me" {...settings}>
+    <>
       {data ? (
-        data.map((item) => (
-          <div key={item.id}>
-            <div className="item">
-              <div className="card">
-                <img src={item.image} alt={item.id} />
+        <Slider className="slider_me" {...settings}>
+          {data.map((item) => (
+            <div key={item.id}>
+              <div className="item">
+                <div className="card">
+                  <img src={item.image} alt={item.id} />
+                </div>
+                <div className="line"></div>
               </div>
-              <div className="line"></div>
             </div>
-          </div>
-        ))
+          ))}
+        </Slider>
       ) : (
-        <>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
+        <Slider className="slider_me" {...settings}>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div key={index}>
+              <div className="item">
+                <div className="card">
+                  <img src="img/MethGdd.png" alt="" />
+                </div>
+                <div className="line"></div>
               </div>
-              <div className="line"></div>
             </div>
-          </div>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
-              </div>
-              <div className="line"></div>
-            </div>
-          </div>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
-              </div>
-              <div className="line"></div>
-            </div>
-          </div>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
-              </div>
-              <div className="line"></div>
-            </div>
-          </div>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
-              </div>
-              <div className="line"></div>
-            </div>
-          </div>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
-              </div>
-              <div className="line"></div>
-            </div>
-          </div>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
-              </div>
-              <div className="line"></div>
-            </div>
-          </div>
-          <div>
-            <div className="item">
-              <div className="card">
-                <img src="img/MethGdd.png" alt="" />
-              </div>
-              <div className="line"></div>
-            </div>
-          </div>
-        </>
+          ))}
+        </Slider>
       )}
-    </Slider>
+    </>
   );
 }

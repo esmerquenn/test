@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../Components/SideBarComponents/Sidebar";
 import Footer from "../Components/FooterComponents/Footer";
+import ScrollToTop from "../Components/ScrollToTop";
 
 function Layout() {
   const [toggle, setToggle] = useState(false);
@@ -25,6 +26,7 @@ function Layout() {
   const isHomePage = location.pathname === "/";
   return (
     <>
+
       {isHomePage ? (
         <div>
           <Outlet />
@@ -45,6 +47,7 @@ function Layout() {
           </div>
         </div>
       )}
+      
     </>
   );
 }

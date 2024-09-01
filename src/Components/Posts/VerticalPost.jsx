@@ -1,6 +1,7 @@
-import React from "react";
-
+import React  from "react";
+// import '../../assets/css/VerticalPost.css'
 function VerticalPost({ description, title, slug, thumbnail }) {
+ 
   return (
     <>
       <article className="main-width_veritical">

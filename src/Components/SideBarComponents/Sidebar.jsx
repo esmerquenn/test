@@ -4,9 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useWidth from "../../Hooks/UseWidth";
 import NavMenu from "./NavMenu";
-import NavLogo from "./NavLogo";
 import useLanguageChange from "../../Hooks/useLanguageChange";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = ({ toggle }) => {
   const { t, i18n } = useTranslation();
@@ -33,7 +32,11 @@ const Sidebar = ({ toggle }) => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   return (
-    <div className={`sidebar  ${toggle ? "active" : ""} ${isFixed ? "fixed" : ""} ${!isHomePage ? "sidebar_bg" : ""} ${isHomePage && toggle && width <768 ? "homebar_bg": ""}`}>
+    <div
+      className={`sidebar  ${toggle ? "active" : ""} ${isFixed ? "fixed" : ""} ${!isHomePage ? "sidebar_bg" : ""} ${
+        isHomePage && toggle && width < 768 ? "homebar_bg" : ""
+      }`}
+    >
       <div className="nav_menu ">
         <div className={`lang ${toggle ? "langing" : ""}`}>
           <button onClick={() => setLanguage("az")}>az</button>
@@ -43,8 +46,10 @@ const Sidebar = ({ toggle }) => {
           </button>
         </div>
         <div className="logos">
-          <NavLogo icon="/img/MethGdd.png" className="logo" />
-          <NavLogo icon="/img/İCON/hamburger.png" className="logo_mobile" />
+          <Link className="logo" to="/">
+            <img src="/img/MethGdd.png" alt="Logo" />
+          </Link>
+          <img className="logo_mobile" src="/img/hamburger.png" alt="Logo" />
         </div>
         <div className="menu-div">
           <ul className="menu">
@@ -54,7 +59,7 @@ const Sidebar = ({ toggle }) => {
               num={1}
               name={t("portfolio")}
               pathName="/design"
-              icon="/img/İCON/portfolio.png"
+              icon="/img/portfolio.png"
             />
             <NavMenu
               onClick={setActiveTab}
@@ -62,7 +67,7 @@ const Sidebar = ({ toggle }) => {
               num={2}
               name={t("repair")}
               pathName="/repair"
-              icon="/img/İCON/constraction.png"
+              icon="/img/constraction.png"
             />
             <NavMenu
               onClick={setActiveTab}
@@ -70,7 +75,7 @@ const Sidebar = ({ toggle }) => {
               num={3}
               name={t("investment")}
               pathName="/investment"
-              icon="/img/İCON/investment.png"
+              icon="/img/investment.png"
             />
             <NavMenu
               onClick={setActiveTab}
@@ -78,7 +83,7 @@ const Sidebar = ({ toggle }) => {
               num={4}
               name={t("about")}
               pathName="/about"
-              icon="/img/İCON/about.png"
+              icon="/img/about.png"
             />
             <NavMenu
               onClick={setActiveTab}
@@ -86,7 +91,7 @@ const Sidebar = ({ toggle }) => {
               num={5}
               name={t("contact")}
               pathName="/contact"
-              icon="/img/İCON/contact.png"
+              icon="/img/contact.png"
             />
           </ul>
         </div>

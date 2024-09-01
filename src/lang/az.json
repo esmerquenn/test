@@ -15,5 +15,7 @@
   "request": "Sorğu göndər",
   "check_phone": "Zəhmət olmasa etibarlı telefon nömrəsi daxil edin (10-15 rəqəm)",
   "check_name": "Zəhmət olmasa etibarlı ad daxil edin (yalnız hərflər və boşluqlar)",
-  "check_mail": "Zəhmət olmasa etibarlı e-poçt ünvanı daxil edin"
+  "check_mail": "Zəhmət olmasa etibarlı e-poçt ünvanı daxil edin",
+   "prev": "öncəki",
+    "next": "sonrakı"
 }

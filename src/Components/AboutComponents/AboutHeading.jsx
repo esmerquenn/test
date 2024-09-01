@@ -1,7 +1,6 @@
 import React from "react";
 
 function AboutHeading({ data }) {
-  console.log(data);
   return (
     <>
       {data ? (

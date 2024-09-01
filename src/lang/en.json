@@ -15,5 +15,7 @@
     "request": "Send Request",
     "check_phone": "Please enter a valid phone number (10-15 digits)",
     "check_name":"Please enter a valid name (letters and spaces only)",
-    "check_mail": "Please enter a valid email address"
+    "check_mail": "Please enter a valid email address",
+    "prev": "prev",
+    "next": "next"
   }

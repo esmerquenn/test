@@ -17,10 +17,8 @@ function Contact() {
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(data);
     try {
       const response = await post(data);
-      console.log("Contact form submitted:", response);
     } catch (error) {
       console.error("Error submitting contact form:", error);
     }

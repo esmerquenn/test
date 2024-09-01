@@ -1,7 +1,6 @@
 import React from "react";
 import { Skeleton, Card } from "antd";
 function Employee({ item, index }) {
-  console.log(item);
   const { name, surname, position, birthdate, professional, image } = item;
   const hasData = name && surname && position && birthdate && professional && image;
   const isEven = index % 2 === 0;
@@ -12,6 +11,9 @@ function Employee({ item, index }) {
           <article className="main-width_horizontal">
             <div className="name_div">
               <div>
+                <h3>
+                  {name} {surname}
+                </h3>
                 <h4>{position}</h4>
                 <h6>{professional}</h6>
               </div>
@@ -21,21 +23,18 @@ function Employee({ item, index }) {
             </div>
             <div className="main_img_horizontal">
               <img src={image} alt="image" />
-              <h3>
-                {name} {surname}
-              </h3>
             </div>
           </article>
         ) : (
           <article className="main-width_horizontal">
             <div className="main_img_horizontal">
               <img src={image} alt="image" />
-              <h3>
-                {name} {surname}
-              </h3>
             </div>
             <div className="name_div">
               <div>
+                <h3>
+                  {name} {surname}
+                </h3>
                 <h4>{position}</h4>
                 <h6>{professional}</h6>
               </div>
